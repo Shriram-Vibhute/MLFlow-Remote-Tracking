@@ -9,6 +9,7 @@ import mlflow.sklearn
 import dagshub
 import os
 
+"""
 # Set up DagsHub credentials for MLflow tracking
 dagshub_token = os.getenv("DAGSHUB_PAT")
 if not dagshub_token:
@@ -23,6 +24,10 @@ repo_name = "mlops-mini-project"
 
 # Set up MLflow tracking URI
 mlflow.set_tracking_uri(f'{dagshub_url}/{repo_owner}/{repo_name}.mlflow')
+"""
+
+mlflow.set_tracking_uri('https://dagshub.com/Shriram-Vibhute/MLFlow-Remote-Tracking.mlflow')
+dagshub.init(repo_owner='Shriram-Vibhute', repo_name='MLFlow-Remote-Tracking', mlflow=True)
 
 # logging configuration
 logger = logging.getLogger('model_evaluation')
