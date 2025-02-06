@@ -77,11 +77,14 @@ stages:
   model_building:
     cmd: python src/model/model_building.py
     deps:
-    - path: data/processed
+    - path: data/processed/test_bow.csv
       hash: md5
-      md5: 8bf40f70ce051b5eccf7f1a232ec83ef.dir
-      size: 103818947
-      nfiles: 4
+      md5: 57cf33d7569dc753ba1d4eb105514a65
+      size: 20780122
+    - path: data/processed/train_bow.csv
+      hash: md5
+      md5: 0930efc83220621bec89617ea97e4e63
+      size: 83038794
     - path: src/model/model_building.py
       hash: md5
       md5: 2b74ac5bb918d7ba00bc17273bae0bf3
@@ -100,14 +103,25 @@ stages:
       size: 40717
     - path: src/model/model_evaluation.py
       hash: md5
-      md5: e4b21ee53bcec267669e61a2246ac667
-      size: 5823
+      md5: b8f5e1bd3c548e81707a5ab6c78fbdeb
+      size: 5294
     outs:
     - path: reports/experiment_info.json
       hash: md5
-      md5: e5a07881eb6b71d8b8695b3b6b6dd152
+      md5: 324d831fad990a409724fdd7d6ea5178
       size: 82
     - path: reports/metrics.json
       hash: md5
       md5: f0da876acac0a1509771dc7551b1ead5
       size: 145
+  model_registration:
+    cmd: python src/model/register_model.py
+    deps:
+    - path: reports/experiment_info.json
+      hash: md5
+      md5: 324d831fad990a409724fdd7d6ea5178
+      size: 82
+    - path: src/model/register_model.py
+      hash: md5
+      md5: 80fc08b09a669b9d0cc20e06f2c4844c
+      size: 2551

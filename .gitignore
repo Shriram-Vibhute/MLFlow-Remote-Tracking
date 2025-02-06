@@ -172,3 +172,4 @@ cython_debug/
 
 # Virtual Environment
 /myenv
+/tmp
